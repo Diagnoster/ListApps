@@ -1,14 +1,20 @@
 package com.example.heroesapp.controller;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.LinearLayout;
 
 
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.example.heroesapp.R;
+import com.example.heroesapp.RecyclerItemClickListener;
 import com.example.heroesapp.adapter.AdapterHeroes;
 import com.example.heroesapp.model.Hero;
 
@@ -38,17 +44,50 @@ public class MainActivity extends AppCompatActivity {
         this.createHero();
         AdapterHeroes adapter = new AdapterHeroes(listHeroes);
 
-        //Configurando RecyclerView com layout linear
+        //Configura RecyclerView com layout linear
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerViewHeroes.setLayoutManager(layoutManager);
 
-        //Otimizando recyclerView
+        //Otimizador recyclerView
         recyclerViewHeroes.setHasFixedSize(true);
+
+        //Divisor celulas
+        recyclerViewHeroes.addItemDecoration( new DividerItemDecoration(this, LinearLayout.VERTICAL));
 
         //Liga adapter ao recycler
         recyclerViewHeroes.setAdapter(adapter);
 
+        recyclerViewHeroes.addOnItemTouchListener(
+                new RecyclerItemClickListener(
+                        getApplicationContext(),
+                        recyclerViewHeroes,
+                        new RecyclerItemClickListener.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(View view, int position) {
+                                Hero obj = listHeroes.get(position);
+                                Toast.makeText(
+                                        getApplicationContext(),
+                                        "Selecionado " + obj.getName(),
+                                        Toast.LENGTH_SHORT
+                                ).show();
+                            }
 
+                            @Override
+                            public void onLongItemClick(View view, int position) {
+                                Toast.makeText(
+                                        getApplicationContext(),
+                                        "Clique longo",
+                                        Toast.LENGTH_SHORT
+                                ).show();
+                            }
+
+                            @Override
+                            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                            }
+                        }
+                )
+        );
 
     }
 }

@@ -28,8 +28,8 @@ public class AdapterHeroes extends RecyclerView.Adapter<AdapterHeroes.MyViewHold
 
         public MyViewHolder(View view) {
             super(view);
-            name = view.findViewById(R.id.textViewOwner);
-            owner = view.findViewById(R.id.textViewName);
+            name = view.findViewById(R.id.textViewName);
+            owner = view.findViewById(R.id.textViewOwner);
             img = view.findViewById(R.id.imageViewHero);
 
         }
