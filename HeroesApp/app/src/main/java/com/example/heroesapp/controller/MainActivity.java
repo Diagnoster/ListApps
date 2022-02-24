@@ -3,15 +3,29 @@ package com.example.heroesapp.controller;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import android.widget.LinearLayout;
+
 
 import android.os.Bundle;
 
 import com.example.heroesapp.R;
 import com.example.heroesapp.adapter.AdapterHeroes;
+import com.example.heroesapp.model.Hero;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     private RecyclerView recyclerViewHeroes;
+    private List<Hero> listHeroes = new ArrayList<>();
+
+    public void createHero() {
+        Hero obj = new Hero(R.drawable.flash, "Flash", "DC");
+        listHeroes.add(obj);
+        obj = new Hero(R.drawable.ironman, "Iron Man", "Marvel");
+        listHeroes.add(obj);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,7 +35,8 @@ public class MainActivity extends AppCompatActivity {
         recyclerViewHeroes = findViewById(R.id.recyclerViewHeroes);
 
         //configuração do adapter
-        AdapterHeroes adapter = new AdapterHeroes();
+        this.createHero();
+        AdapterHeroes adapter = new AdapterHeroes(listHeroes);
 
         //Configurando RecyclerView com layout linear
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
