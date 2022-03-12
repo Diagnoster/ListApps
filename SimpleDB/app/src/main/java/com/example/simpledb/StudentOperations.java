@@ -6,6 +6,9 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class StudentOperations {
     private SimpleDBWrapper dbHelper;
     private String[] STUDENT_TABLE_COLUMNS = {SimpleDBWrapper.STUDENT_ID, SimpleDBWrapper.STUDENT_NAME};
@@ -36,6 +39,32 @@ public class StudentOperations {
         cursor.close();
         return student;
     }
+
+    public void deletedStudent(Student student) {
+        long id = student.getId();
+        db.delete(SimpleDBWrapper.TABLE_NAME, SimpleDBWrapper.STUDENT_ID + "=" + id, null);
+    }
+
+    public List getAllStudents() {
+        List students = new ArrayList();
+        Cursor cursor = db.query(SimpleDBWrapper.TABLE_NAME, STUDENT_TABLE_COLUMNS, null, null, null, null, null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            Student student = ParseStudent(cursor);
+            students.add(student);
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return students;
+    }
+
+    private Student parseStudent(Cursor cursor) {
+        Student student = new Student();
+        student.setId(cursor.getInt(cursor.getColumnIndex("id")));
+        student.setName(cursor.getString(cursor.getColumnIndex("name")));
+        return student;
+    }
+
 
 
 }
