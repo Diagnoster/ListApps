@@ -1,5 +1,6 @@
 package com.example.simpledb;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -50,7 +51,7 @@ public class StudentOperations {
         Cursor cursor = db.query(SimpleDBWrapper.TABLE_NAME, STUDENT_TABLE_COLUMNS, null, null, null, null, null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
-            Student student = ParseStudent(cursor);
+            Student student = parseStudent(cursor);
             students.add(student);
             cursor.moveToNext();
         }
@@ -58,6 +59,7 @@ public class StudentOperations {
         return students;
     }
 
+    @SuppressLint("Range")
     private Student parseStudent(Cursor cursor) {
         Student student = new Student();
         student.setId(cursor.getInt(cursor.getColumnIndex("id")));

@@ -6,50 +6,67 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.Toast;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+
+    private StudentOperations studentDBOperations;
+    ListView studentList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        studentDBOperations = new StudentOperations(this);
+        studentDBOperations.open();
 
-        try{
-            //create database
-            SQLiteDatabase db = openOrCreateDatabase("contacts.db", MODE_PRIVATE, null);
+        studentList = findViewById(R.id.studentList);
+        List values = studentDBOperations.getAllStudents();
+        //create adapter list
+        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, values);
+        studentList.setAdapter(adapter);
+    }
 
-            //create table if not exist
-            db.execSQL("CREATE TABLE IF NOT EXISTS contacts (name VARCHAR, age INT(3))");
 
-            //insert values
-            db.execSQL("INSERT INTO contacts(name, age) VALUES ('James', 26)");
-            db.execSQL("INSERT INTO contacts(name, age) VALUES ('Isabela', 24)");
+    public void addStudent(View view) {
+        ArrayAdapter adapter = (ArrayAdapter) studentList.getAdapter();
+        EditText editTextStudentName = findViewById(R.id.editTextStudentName);
+        Student student = studentDBOperations.addStudent(editTextStudentName.getText().toString());
+        adapter.add(student);
+        editTextStudentName.setText("");
+    }
 
-            //update values
-            db.execSQL("UPDATE  contacts SET age = 20 WHERE name = 'James'");
+    public void deleteFirstStudent(View view) {
+        ArrayAdapter adapter = (ArrayAdapter) studentList.getAdapter();
+        Student student = null;
 
-            //delete values
-            db.execSQL("DELETE FROM contacts WHERE name = 'Isabela'");
-
-            //recovery values
-            Cursor cursor = db.rawQuery("SELECT name, age FROM contacts", null);
-
-            //table indices
-            int nameIndex = cursor.getColumnIndex("name");
-            int ageIndex = cursor.getColumnIndex("age");
-
-            //travel cursor
-            // use log class for print in logCat terminal
-            cursor.moveToFirst();
-            while(cursor != null) {
-                Log.i("RESULTADO - nome : ", cursor.getString(nameIndex));
-                Log.i("RESULTADO - idade : ", cursor.getString(ageIndex));
-                cursor.moveToNext();
-            }
-
-        } catch(Exception e) {
-            e.printStackTrace();
+        //Verify list > 0
+        if(studentList.getAdapter().getCount() > 0) {
+            //get item for remove
+            student = (Student) studentList.getAdapter().getItem(0);
+            //remove base
+            studentDBOperations.deletedStudent(student);
+            adapter.remove(student);
+        } else {
+            Toast.makeText(this, "Lista vazia", Toast.LENGTH_SHORT).show();
         }
+    }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        studentDBOperations.open();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        studentDBOperations.close();
     }
 }

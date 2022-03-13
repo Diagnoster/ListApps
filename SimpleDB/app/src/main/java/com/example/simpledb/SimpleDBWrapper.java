@@ -3,6 +3,8 @@ package com.example.simpledb;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.view.View;
+import android.widget.ArrayAdapter;
 
 public class SimpleDBWrapper extends SQLiteOpenHelper {
 
@@ -19,6 +21,11 @@ public class SimpleDBWrapper extends SQLiteOpenHelper {
 
     public SimpleDBWrapper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
+    }
+
+    @Override
+    public void onCreate(SQLiteDatabase sqLiteDatabase) {
+
     }
 
     @Override
