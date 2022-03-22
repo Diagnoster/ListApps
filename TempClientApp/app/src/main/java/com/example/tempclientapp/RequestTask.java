@@ -11,7 +11,7 @@ import java.net.Socket;
 
 public class RequestTask extends AsyncTask<Double, Void, Double>{
     private TextView output;
-    private static final String IP = "10.0.2.2";
+    private static final String IP = "10.153.117.150";
     private static final int port = 12345;
 
     public RequestTask(TextView output) {
