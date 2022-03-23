@@ -22,7 +22,6 @@
             android:layout_width="372dp"
             android:layout_height="59dp"
             android:layout_margin="16dp"
-            android:layout_weight="16dp"
             android:gravity="center"
             android:onClick="getData"
             android:text="Recuperar Dados" />
@@ -31,7 +30,6 @@
             android:id="@+id/output"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="16dp"
             android:text="Resultado" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
