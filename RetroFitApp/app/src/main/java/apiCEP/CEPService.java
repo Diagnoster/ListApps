@@ -1,10 +1,11 @@
 package apiCEP;
 
-import okhttp3.Address;
+import Model.Address;
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.Path;
 
 public interface CEPService {
-    @GET("81260000/json/")
-    Call<Address> getFullAddress();
+    @GET("{cep}/json/")
+    Call <Address> getFullAddress(@Path("cep") String cep);
 }

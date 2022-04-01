@@ -8,7 +8,7 @@ public class RetrofitConfig {
 
     private final Retrofit retrofit;
 
-    public RetrofitConfig(RetrofitConfig retrofit) {
+    public RetrofitConfig() {
         //url web service
         this.retrofit = new Retrofit.Builder()
                 .baseUrl("https://viacep.com.br/ws/")

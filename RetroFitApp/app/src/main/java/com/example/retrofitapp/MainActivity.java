@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         progressDialog.setMessage("Consultando endereço...");
         progressDialog.show();
 
-        Call<Address> call = new RetrofitConfig().getCEPService().getFullAddress();
+        Call<Address> call = new RetrofitConfig().getCEPService().getFullAddress("81260300");
         call.enqueue(new Callback<Address>() {
             @Override
             public void onResponse (Call <Address> call, Response <Address> response){
