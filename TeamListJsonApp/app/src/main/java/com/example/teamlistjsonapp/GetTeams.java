@@ -22,7 +22,7 @@ public class GetTeams extends AsyncTask<String, Void, Void> {
     private ListView listView;
     ArrayList<HashMap<String, String>> teamList;
 
-    public GetTeams(ProgressDialog progressDialog, ListView listVie, Context context) {
+    public GetTeams(ProgressDialog progressDialog, ListView listView, Context context) {
         this.progressDialog = progressDialog;
         this.listView = listView;
         this.context = context;
@@ -56,9 +56,9 @@ public class GetTeams extends AsyncTask<String, Void, Void> {
                     String series = object.getString("serie");
                     HashMap<String, String> team = new HashMap<>();
                     team.put("id", id);
-                    team.put("nome", id);
-                    team.put("cidade", id);
-                    team.put("serie", id);
+                    team.put("name", name);
+                    team.put("city", city);
+                    team.put("series", series);
                     System.out.println("CIDADE = " + city);
                     teamList.add(team);
                 }
