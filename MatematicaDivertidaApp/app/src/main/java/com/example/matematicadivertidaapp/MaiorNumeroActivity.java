@@ -21,9 +21,7 @@ public class MaiorNumeroActivity extends AppCompatActivity {
     public TextView txtDigit1;
     public TextView txtDigit2;
     public TextView txtDigit3;
-    public TextView txtAnswer;
     public EditText inputAnswer;
-    public Button btnAnswer;
     public List<Integer> digits;
     public int answer;
     public int result;
@@ -31,11 +29,19 @@ public class MaiorNumeroActivity extends AppCompatActivity {
     public double losses = 0;
     public double runs = 0;
     public double finalScore = 0;
+    int n1,n2,n3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maior_numero);
+
+        txtDigit1 = findViewById(R.id.txtDigit1);
+        txtDigit2 = findViewById(R.id.txtDigit2);
+        txtDigit3 = findViewById(R.id.txtDigit3);
+        inputAnswer = findViewById(R.id.inputAnswer);
+
+        startGame();
 
 
     }
@@ -67,7 +73,7 @@ public class MaiorNumeroActivity extends AppCompatActivity {
         digits = new ArrayList<Integer>();
         int drawResult;
         for (int i = 0; i < 3; i++) {
-            drawResult = draw(0, 9);
+            drawResult = sortear(0, 9);
             digits.add(drawResult);
         }
         txtDigit1.setText(String.valueOf(digits.get(0)));
@@ -76,11 +82,10 @@ public class MaiorNumeroActivity extends AppCompatActivity {
         Collections.sort(digits, Collections.reverseOrder());
         String resultString = String.valueOf(digits.get(0)) + String.valueOf(digits.get(1)) + String.valueOf(digits.get(2));
         result = Integer.valueOf(resultString);
-        txtAnswer.setText(String.valueOf(result));
     }
 
 
-    public int draw(int min, int max) {
+    public int sortear(int min, int max) {
         Random r = new Random();
         int result = r.nextInt(max - min + 1) + min;
         return result;
@@ -108,6 +113,8 @@ public class MaiorNumeroActivity extends AppCompatActivity {
                 });
         alertDialog.show();
     }
+
+
 
     public void back(View view) {
         Intent it = new Intent(this, MainActivity.class);

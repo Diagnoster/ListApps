@@ -24,7 +24,7 @@
         android:id="@+id/txtDigit1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="92dp"
         android:layout_marginEnd="80dp"
         android:text="0"
         android:textSize="36sp"
@@ -36,12 +36,11 @@
         android:layout_width="37dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="92dp"
         android:layout_marginEnd="8dp"
         android:text="0"
         android:textSize="36sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.435"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
@@ -49,25 +48,12 @@
         android:id="@+id/txtDigit3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="72dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="92dp"
         android:text="0"
         android:textSize="36sp"
         app:layout_constraintStart_toEndOf="@+id/txtDigit2"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-    <TextView
-        android:id="@+id/txtAnswer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="88dp"
-        android:layout_marginEnd="8dp"
-        android:text="0"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtDigit2" />
 
     <EditText
         android:id="@+id/inputAnswer"
