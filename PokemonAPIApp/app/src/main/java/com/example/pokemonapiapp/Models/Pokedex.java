@@ -4,6 +4,7 @@ import java.util.List;
 
 public class Pokedex {
 
-    public List<Pokemon> pokemon { get; set; }
+    public List<Pokemon> pokemon;
+
 
 }
