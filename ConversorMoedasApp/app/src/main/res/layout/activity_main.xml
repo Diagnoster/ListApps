@@ -11,19 +11,20 @@
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
         android:layout_marginTop="29dp"
-        android:layout_marginEnd="15dp"
         android:text="Valor Convertido"
         android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="@+id/editTextInput"
+        app:layout_constraintStart_toStartOf="@+id/editTextInput"
         app:layout_constraintTop_toBottomOf="@+id/button" />
 
     <RadioGroup
         android:id="@+id/radioGroup3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="17dp"
-        app:layout_constraintStart_toStartOf="@+id/textView3"
+        android:layout_marginStart="55dp"
+        android:layout_marginTop="19dp"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3">
 
         <RadioButton
@@ -39,7 +40,7 @@
             android:text="Real" />
 
         <RadioButton
-            android:id="@+id/radioButtondeDolar"
+            android:id="@+id/radioButtonDeDolar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Dólar" />
@@ -62,9 +63,9 @@
         android:id="@+id/radioGroup4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="2dp"
-        android:layout_marginTop="15dp"
-        app:layout_constraintStart_toStartOf="@+id/textView4"
+        android:layout_marginTop="19dp"
+        android:layout_marginEnd="55dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4">
 
         <RadioButton
@@ -106,6 +107,7 @@
         android:layout_marginBottom="13dp"
         android:text="Digite o valor"
         android:textSize="18sp"
+        android:textStyle="italic"
         app:layout_constraintBottom_toTopOf="@+id/editTextInput"
         app:layout_constraintStart_toStartOf="@+id/editTextInput" />
 
@@ -113,37 +115,35 @@
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="19dp"
-        android:layout_marginEnd="20dp"
         android:onClick="convert"
         android:text="Converter"
-        app:layout_constraintEnd_toEndOf="@+id/editTextInput"
+        app:layout_constraintStart_toStartOf="@+id/editTextInput"
         app:layout_constraintTop_toBottomOf="@+id/editTextInput" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="55dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="29dp"
+        android:layout_marginTop="19dp"
         android:text="De:"
         android:textAlignment="center"
         android:textStyle="bold|italic"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/radioGroup3"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="115dp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="19dp"
-        android:layout_marginEnd="117dp"
         android:text="Para:"
         android:textAlignment="center"
         android:textStyle="bold|italic"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/radioGroup3"
+        app:layout_constraintStart_toStartOf="@+id/radioGroup4"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -161,7 +161,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
         android:ems="10"
-        android:hint="valor"
+        android:hint="valor "
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:textAlignment="center"

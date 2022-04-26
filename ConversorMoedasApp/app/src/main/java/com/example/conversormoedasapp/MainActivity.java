@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void convert(View view) {
         RadioButton deReal = findViewById(R.id.radioButtonDeReal);
-        RadioButton deDolar = findViewById(R.id.radioButtondeDolar);
+        RadioButton deDolar = findViewById(R.id.radioButtonDeDolar);
         RadioButton deEuro = findViewById(R.id.radioButtonDeEuro);
         RadioButton deBitcoin = findViewById(R.id.radioButtonDeBitcoin);
         RadioButton deEthereum = findViewById(R.id.radioButtonDeEthereum);
