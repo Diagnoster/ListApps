@@ -11,7 +11,7 @@ public class RetrofitConfig {
     public RetrofitConfig() {
         //url web service
         this.retrofit = new Retrofit.Builder()
-                .baseUrl("https://viacep.com.br/ws/")
+                .baseUrl("https://economia.awesomeapi.com.br/json")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
     }
