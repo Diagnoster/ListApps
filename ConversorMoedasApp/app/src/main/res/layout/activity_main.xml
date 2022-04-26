@@ -11,23 +11,23 @@
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="39dp"
+        android:layout_marginTop="29dp"
+        android:layout_marginEnd="15dp"
         android:text="Valor Convertido"
         android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@+id/textViewOutput"
-        app:layout_constraintStart_toStartOf="@+id/textViewOutput"
+        app:layout_constraintEnd_toEndOf="@+id/editTextInput"
         app:layout_constraintTop_toBottomOf="@+id/button" />
 
     <RadioGroup
         android:id="@+id/radioGroup3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="17dp"
         app:layout_constraintStart_toStartOf="@+id/textView3"
         app:layout_constraintTop_toBottomOf="@+id/textView3">
 
         <RadioButton
-            android:id="@+id/radioButtonDeEuro3"
+            android:id="@+id/radioButtonDeEuro"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Euro" />
@@ -45,16 +45,16 @@
             android:text="Dólar" />
 
         <RadioButton
-            android:id="@+id/radioButtonDeEuro"
+            android:id="@+id/radioButtonDeBitcoin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Euro" />
+            android:text="Bitcoin" />
 
         <RadioButton
             android:id="@+id/radioButtonDeEthereum"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Bitcoin" />
+            android:text="Ethereum" />
 
     </RadioGroup>
 
@@ -63,9 +63,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="2dp"
-        android:layout_marginBottom="149dp"
-        app:layout_constraintBottom_toTopOf="@+id/button"
-        app:layout_constraintStart_toStartOf="@+id/textView4">
+        android:layout_marginTop="15dp"
+        app:layout_constraintStart_toStartOf="@+id/textView4"
+        app:layout_constraintTop_toBottomOf="@+id/textView4">
+
+        <RadioButton
+            android:id="@+id/radioButtonParaEuro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Euro" />
 
         <RadioButton
             android:id="@+id/radioButtonParaReal"
@@ -80,22 +86,16 @@
             android:text="Dólar" />
 
         <RadioButton
-            android:id="@+id/radioButtonParaEuro"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Euro" />
-
-        <RadioButton
             android:id="@+id/radioButtonParaBitcoin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Euro" />
+            android:text="Bitcoin" />
 
         <RadioButton
             android:id="@+id/radioButtonParaEthereum"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Euro" />
+            android:text="Ethereum" />
     </RadioGroup>
 
     <TextView
@@ -113,7 +113,7 @@
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="18dp"
+        android:layout_marginTop="19dp"
         android:layout_marginEnd="20dp"
         android:onClick="convert"
         android:text="Converter"
@@ -136,19 +136,21 @@
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="115dp"
         android:layout_marginTop="19dp"
         android:layout_marginEnd="117dp"
         android:text="Para:"
         android:textAlignment="center"
         android:textStyle="bold|italic"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/radioGroup3"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textViewOutput"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="38dp"
+        android:layout_marginTop="46dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
@@ -157,15 +159,15 @@
         android:id="@+id/editTextInput"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="3dp"
-        android:layout_marginTop="84dp"
+        android:layout_marginTop="80dp"
         android:ems="10"
         android:hint="valor"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:textAlignment="center"
         android:textSize="14sp"
-        app:layout_constraintStart_toEndOf="@+id/radioGroup3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/radioGroup3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
